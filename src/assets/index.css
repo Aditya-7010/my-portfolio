@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* 
+   If you have a tailwind.config.js with custom colors/fonts, 
+   you MUST add this line so v4 knows where to find them: 
+*/
+@config "../../tailwind.config.js"; 
+
+/* Your existing custom CSS below */
+html {
+  scroll-behavior: smooth;
+}
