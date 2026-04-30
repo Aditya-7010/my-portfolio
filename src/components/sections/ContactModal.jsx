@@ -104,7 +104,7 @@ const ContactModal = ({ isOpen, onClose }) => {
         <div className="flex items-center justify-between p-8 pb-4 border-b border-slate-100">
           <h3 className="text-3xl font-heading font-black tracking-tight text-slate-900 flex items-center gap-3">
             <Shield className="text-indigo-600 drop-shadow-sm" size={28}/>
-            Secure Comms
+            Lets Connect
           </h3>
           <button 
             onClick={onClose}
@@ -118,7 +118,7 @@ const ContactModal = ({ isOpen, onClose }) => {
           {status === 'success' ? (
              <div className="flex flex-col items-center justify-center py-10 text-center animate-fade-in-up">
                 <CheckCircle size={72} className="text-teal-500 mb-6 animate-bounce-short drop-shadow-sm"/>
-                <h4 className="text-3xl font-heading font-bold tracking-tight text-slate-900 mb-3">Transmission Successful!</h4>
+                <h4 className="text-3xl font-heading font-bold tracking-tight text-slate-900 mb-3">Email Sent!</h4>
                 
                 {FORMSPREE_ENDPOINT ? (
                   <p className="text-slate-600 font-body text-lg">Your data payload was received. I will reach out shortly.</p>
@@ -154,7 +154,7 @@ const ContactModal = ({ isOpen, onClose }) => {
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5 animate-fade-in-up font-body">
               <div className="flex flex-col gap-2">
-                <label className="text-sm font-heading font-bold text-slate-500 uppercase tracking-widest pl-1">Your Alias *</label>
+                <label className="text-sm font-heading font-bold text-slate-500 uppercase tracking-widest pl-1">Your Name *</label>
                 <input 
                   type="text" 
                   name="name"
@@ -167,7 +167,7 @@ const ContactModal = ({ isOpen, onClose }) => {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-sm font-heading font-bold text-slate-500 uppercase tracking-widest pl-1">Return Address (Email) *</label>
+                <label className="text-sm font-heading font-bold text-slate-500 uppercase tracking-widest pl-1">Your Email *</label>
                 <input 
                   type="email" 
                   name="email"
@@ -192,7 +192,7 @@ const ContactModal = ({ isOpen, onClose }) => {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-sm font-heading font-bold text-slate-500 uppercase tracking-widest pl-1">Data Payload *</label>
+                <label className="text-sm font-heading font-bold text-slate-500 uppercase tracking-widest pl-1">Your Message *</label>
                 <textarea 
                   name="message"
                   required
@@ -218,7 +218,7 @@ const ContactModal = ({ isOpen, onClose }) => {
                 ) : (
                   <>
                     <Send size={22} className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform relative z-10 text-white" /> 
-                    <span className="relative z-10">Transmit Payload</span>
+                    <span className="relative z-10">Send Message</span>
                   </>
                 )}
               </button>
