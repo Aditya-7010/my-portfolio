@@ -1,43 +1,85 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const CustomCursor = () => {
-  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const cursorOuterRef = useRef(null);
+  const cursorInnerRef = useRef(null);
   const [isHovering, setIsHovering] = useState(false);
+  const isHoveringRef = useRef(false);
+
+  // Position tracking
+  const mouse = useRef({ x: 0, y: 0 });
+  const delayedOuter = useRef({ x: 0, y: 0 });
+  const delayedInner = useRef({ x: 0, y: 0 });
+  const requestRef = useRef(null);
 
   useEffect(() => {
-    const move = (e) => setPos({ x: e.clientX, y: e.clientY });
-    const addHover = () => setIsHovering(true);
-    const removeHover = () => setIsHovering(false);
+    isHoveringRef.current = isHovering;
+  }, [isHovering]);
 
-    window.addEventListener('mousemove', move);
-    document.querySelectorAll('a, button, .hover-target').forEach(el => {
-      el.addEventListener('mouseenter', addHover);
-      el.addEventListener('mouseleave', removeHover);
-    });
+  useEffect(() => {
+    const onMouseMove = (e) => {
+      mouse.current = { x: e.clientX, y: e.clientY };
+    };
+
+    const animate = () => {
+      // Smoothing factors (0.15 is buttery, 0.40 is snappier)
+      const easeOuter = 0.15; 
+      const easeInner = 0.40; 
+
+      // 1. Calculate the smoothed position
+      delayedOuter.current.x += (mouse.current.x - delayedOuter.current.x) * easeOuter;
+      delayedOuter.current.y += (mouse.current.y - delayedOuter.current.y) * easeOuter;
+      
+      delayedInner.current.x += (mouse.current.x - delayedInner.current.x) * easeInner;
+      delayedInner.current.y += (mouse.current.y - delayedInner.current.y) * easeInner;
+
+      // 2. Apply position only (no scale logic)
+      if (cursorOuterRef.current) {
+        cursorOuterRef.current.style.transform = `translate(${delayedOuter.current.x - 16}px, ${delayedOuter.current.y - 16}px)`;
+      }
+      if (cursorInnerRef.current) {
+        cursorInnerRef.current.style.transform = `translate(${delayedInner.current.x - 4}px, ${delayedInner.current.y - 4}px)`;
+      }
+
+      requestRef.current = requestAnimationFrame(animate);
+    };
+
+    requestRef.current = requestAnimationFrame(animate);
+
+    const handleMouseOver = (e) => {
+      if (e.target.closest('a, button, .hover-target')) setIsHovering(true);
+    };
+    const handleMouseOut = (e) => {
+      if (e.target.closest('a, button, .hover-target')) setIsHovering(false);
+    };
+
+    window.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseover', handleMouseOver);
+    document.addEventListener('mouseout', handleMouseOut);
 
     return () => {
-      window.removeEventListener('mousemove', move);
-      document.querySelectorAll('a, button, .hover-target').forEach(el => {
-        el.removeEventListener('mouseenter', addHover);
-        el.removeEventListener('mouseleave', removeHover);
-      });
+      window.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseover', handleMouseOver);
+      document.removeEventListener('mouseout', handleMouseOut);
+      cancelAnimationFrame(requestRef.current);
     };
   }, []);
 
   return (
     <>
+      {/* Outer Ring - Stays 8x8 (32px) */}
       <div 
-        className={`hidden lg:flex fixed top-0 left-0 w-8 h-8 rounded-full border-2 pointer-events-none z-[100] transition-all duration-100 ease-out items-center justify-center backdrop-blur-[1px] mix-blend-multiply
-          ${isHovering ? 'scale-[2.5] bg-indigo-500/10 border-teal-500 shadow-[0_0_15px_rgba(20,184,166,0.3)]' : 'scale-100 border-indigo-600/60'}`}
-        style={{ transform: `translate(${pos.x - 16}px, ${pos.y - 16}px)` }}
-      >
-        {isHovering && <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full shadow-[0_0_8px_rgba(79,70,229,0.5)]"></div>}
-      </div>
+        ref={cursorOuterRef}
+        className={`hidden lg:flex fixed top-0 left-0 w-8 h-8 rounded-full border-2 pointer-events-none z-[100] items-center justify-center backdrop-blur-[1px] mix-blend-multiply transition-colors duration-300
+          ${isHovering ? 'border-teal-500 bg-teal-500/5' : 'border-indigo-600/60'}`}
+      />
+      
+      {/* Inner Dot - Stays 2x2 (8px) */}
       <div 
-        className={`hidden lg:block fixed top-0 left-0 w-2 h-2 bg-teal-500 rounded-full pointer-events-none z-[101] transition-all duration-75 ease-out shadow-[0_0_10px_rgba(20,184,166,0.5)]
-          ${isHovering ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}`}
-        style={{ transform: `translate(${pos.x - 4}px, ${pos.y - 4}px)` }}
-      ></div>
+        ref={cursorInnerRef}
+        className={`hidden lg:block fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[101] shadow-[0_0_10px_rgba(20,184,166,0.5)] transition-colors duration-300
+          ${isHovering ? 'bg-teal-400' : 'bg-indigo-500'}`}
+      />
     </>
   );
 };
