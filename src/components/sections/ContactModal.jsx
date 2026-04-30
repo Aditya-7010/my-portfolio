@@ -161,7 +161,7 @@ const ContactModal = ({ isOpen, onClose }) => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="John Doe"
+                  placeholder="Your name or Organization name"
                   className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 font-medium placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all shadow-inner text-lg"
                 />
               </div>
@@ -174,7 +174,7 @@ const ContactModal = ({ isOpen, onClose }) => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="john@example.com"
+                  placeholder="mail@example.com"
                   className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 font-medium placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all shadow-inner text-lg"
                 />
               </div>
@@ -199,7 +199,7 @@ const ContactModal = ({ isOpen, onClose }) => {
                   rows="4"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell me about your amazing idea..."
+                  placeholder="Your message here..."
                   className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 font-medium placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all resize-none shadow-inner text-lg"
                 />
               </div>
