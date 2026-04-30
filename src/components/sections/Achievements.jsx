@@ -8,7 +8,7 @@ const Achievements = () => (
   <section id="achievements" className="py-24 bg-slate-50/50 backdrop-blur-[1px] relative overflow-hidden">
     <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
       <FadeInSection>
-        <SectionHeading title="Achievements & Certs" subtitle="Milestones" />
+        <SectionHeading title="Achievements & Certifications" subtitle="Milestones" />
       </FadeInSection>
       
       <div className="grid lg:grid-cols-2 gap-12 sm:gap-20">
