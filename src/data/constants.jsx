@@ -17,7 +17,7 @@ export const PROFILE = {
   email: "adisharma70100@gmail.com",
   linkedin: "https://www.linkedin.com/in/adi-sharma7/",
   github: "https://github.com/Aditya-7010",
-  summary: "Engineering the future through elegant code and intelligent hardware. As a versatile Full-Stack Developer and Electronics Engineer, I bridge the divide between physical embedded systems and scalable cloud architectures. With a strong foundation in IoT, predictive machine learning models, and modern web frameworks, I architect robust solutions that transform complex challenges into seamless digital experiences. Driven by an insatiable curiosity, I continuously evolve my technical arsenal to build forward-thinking, resilient technologies."
+  summary: "Full-stack developer and electronics engineering enthusiast with experience building end-to-end solutions across software and hardware. Skilled in modern web technologies, IoT systems, and machine learning fundamentals, with a focus on developing practical, scalable applications. Comfortable working across the stack—from designing user interfaces to integrating backend services and embedded components. Continuously learning and applying new technologies to solve real-world problems efficiently."
 };
 
 export const TECH_CATEGORIES = [
@@ -90,14 +90,14 @@ export const PROJECTS = [
     duration: "1 month",
     team: "Individual",
     tech: ["Java", "Graphics", "OOP", "Multithreading"],
-    description: "Built a complete 2D game using pure Java Graphics without any external engine. Engineered rendering, complex collision physics, and NPC logic from scratch utilizing advanced multithreading and strict Object-Oriented Principles."
+    description: "Designed and developed a 2D game using core Java Graphics without relying on external game engines. Implemented rendering pipelines, collision detection mechanisms, and NPC behavior while applying object-oriented design principles and multithreading for performance optimization."
   },
   {
     title: "Predictive Mental Health Engine 🧠",
     duration: "1 month",
     team: "Team of 3",
     tech: ["Python", "Flask", "Logistic Regression", "HTML", "CSS"],
-    description: "Developed a logistic regression machine learning model to accurately predict and evaluate mental health status from workplace and personal data. Deployed as a fully interactive, scalable web application using the Flask framework."
+    description: "Built a machine learning model using logistic regression to assess mental health indicators based on user-provided data. Integrated the model into a Flask-based web application, enabling an interactive interface for data input and real-time predictions."
   }
 ];
 

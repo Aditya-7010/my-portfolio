@@ -19,9 +19,9 @@ const Contact = ({ openContactModal }) => (
           <div className="absolute inset-0 bg-gradient-to-tr from-indigo-50 to-transparent pointer-events-none"></div>
           <Send className="text-indigo-600 w-10 h-10 -ml-1 mt-1 drop-shadow-sm relative z-10" />
         </div>
-        <h2 className="text-5xl md:text-7xl lg:text-8xl font-heading font-black text-slate-900 mb-6 tracking-tighter drop-shadow-sm">Initialize Contact</h2>
+        <h2 className="text-5xl md:text-7xl lg:text-8xl font-heading font-black text-slate-900 mb-6 tracking-tighter drop-shadow-sm">Get In Touch</h2>
         <p className="text-slate-600 font-body text-lg sm:text-xl md:text-2xl mb-12 leading-relaxed max-w-2xl mx-auto font-light bg-white/60 backdrop-blur-sm p-4 rounded-2xl border border-slate-200">
-          Whether you have a complex project idea, an engineering opportunity, or just want to discuss tech architecture, my channel is always open.
+          Whether you have a project idea, a collaboration opportunity, or would like to discuss technology and system design, feel free to reach out. I’m always open to meaningful conversations.
         </p>
         
         {/* Opens the robust customized form modal */}
@@ -31,7 +31,7 @@ const Contact = ({ openContactModal }) => (
         >
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1s_infinite] pointer-events-none"></div>
           <Mail size={28} className="group-hover:scale-110 group-hover:animate-pulse transition-all text-white relative z-10" /> 
-          <span className="relative z-10">Secure Transmission</span>
+          <span className="relative z-10">Contact Me</span>
         </button>
 
         <div className="mt-24 flex justify-center gap-6 sm:gap-10">

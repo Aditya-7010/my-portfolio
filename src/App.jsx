@@ -87,9 +87,9 @@ export function App() {
         <Hero />
         <About />
         <TechStack />
-        <Education />
         <Projects />
         <Achievements />
+        <Education />
         <Contact openContactModal={openContactModal} />
       </main>
       

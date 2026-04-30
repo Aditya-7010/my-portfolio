@@ -72,7 +72,7 @@ const Navbar = ({ openContactModal }) => {
             onClick={openContactModal}
             className="px-5 py-2.5 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-200 hover:bg-indigo-600 hover:text-white transition-all duration-300 font-heading font-bold text-sm tracking-wider shadow-sm hover:shadow-[0_8px_20px_rgba(79,70,229,0.25)] hover:scale-105 active:scale-95 hover-target uppercase"
           >
-            Let's Talk
+            Let's Connect
           </button>
         </div>
 
